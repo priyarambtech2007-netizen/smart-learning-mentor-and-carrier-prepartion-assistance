@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mock Test | Smart Learning Career</title>
+<link rel="stylesheet" href="../static/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+<div class="background">
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+</div>
+<div class="container">
+<div class="glass">
+<h1>Mock Test</h1>
+<p>Test your knowledge with a quick 4-question quiz.</p>
+<form id="mockTestForm" style="margin-top:25px;">
+<div class="input-group" style="flex-direction:column; gap:15px;"><label>1. What does HTML stand for?</label><select id="m1" required><option value="">Choose</option><option value="1">Hypertext Markup Language</option><option value="0">High Text Machine Language</option></select></div>
+<div class="input-group" style="flex-direction:column; gap:15px;"><label>2. Which language is used for style on web pages?</label><select id="m2" required><option value="">Choose</option><option value="1">CSS</option><option value="0">Python</option></select></div>
+<div class="input-group" style="flex-direction:column; gap:15px;"><label>3. What is a function in programming?</label><select id="m3" required><option value="">Choose</option><option value="1">Reusable block of code</option><option value="0">A database table</option></select></div>
+<div class="input-group" style="flex-direction:column; gap:15px;"><label>4. Which tool is best for building web apps with Python?</label><select id="m4" required><option value="">Choose</option><option value="1">Flask</option><option value="0">Excel</option></select></div>
+<button type="submit" class="login-btn">Submit Answers</button>
+</form>
+<div id="mockResult" style="margin-top:25px; color:#dbeafe;"></div>
+<div style="margin-top:20px; display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+<a href="dashboard.html" class="btn login"><i class="fa-solid fa-arrow-left"></i>Back to Dashboard</a>
+<a href="progress.html" class="btn register"><i class="fa-solid fa-chart-line"></i>View Progress</a>
+</div>
+</div>
+</div>
+<script src="../static/script.js"></script>
+<script>
+document.getElementById('mockTestForm').addEventListener('submit', function (event) {
+  event.preventDefault();
+  const answers = [
+    document.getElementById('m1').value,
+    document.getElementById('m2').value,
+    document.getElementById('m3').value,
+    document.getElementById('m4').value
+  ];
+  const score = answers.reduce((sum, value) => sum + Number(value), 0);
+  document.getElementById('mockResult').textContent = `Your score is ${score} / 4. ${score >= 3 ? 'Great job — you are ready for the next step!' : 'Review the course recommendations and try again.'}`;
+});
+</script>
+</body>
+</html>

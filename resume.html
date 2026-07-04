@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume Builder | Smart Learning Career</title>
+<link rel="stylesheet" href="../static/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+<div class="background">
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+</div>
+<div class="container">
+<div class="glass">
+<h1>Resume Builder</h1>
+<p>Fill in your details and generate a resume preview instantly.</p>
+<form id="resumeForm" style="margin-top:25px;">
+<div class="input-group"><i class="fa-solid fa-user"></i><input type="text" id="fullName" placeholder="Full Name" required></div>
+<div class="input-group"><i class="fa-solid fa-envelope"></i><input type="email" id="resumeEmail" placeholder="Email Address" required></div>
+<div class="input-group"><i class="fa-solid fa-graduation-cap"></i><input type="text" id="education" placeholder="Education" required></div>
+<div class="input-group"><i class="fa-solid fa-briefcase"></i><input type="text" id="experience" placeholder="Key Experience" required></div>
+<div class="input-group"><i class="fa-solid fa-lightbulb"></i><input type="text" id="highlights" placeholder="Key Skills / Highlights" required></div>
+<button type="submit" class="login-btn">Generate Preview</button>
+</form>
+<div id="resumePreview" style="margin-top:25px; padding:20px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); border-radius:18px; color:#e2e8f0; min-height:180px;"></div>
+<div style="margin-top:20px; display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+<a href="dashboard.html" class="btn login"><i class="fa-solid fa-arrow-left"></i>Back to Dashboard</a>
+<a href="profile.html" class="btn register"><i class="fa-solid fa-user"></i>Edit Profile</a>
+</div>
+</div>
+</div>
+<script src="../static/script.js"></script>
+<script>
+document.getElementById('resumeForm').addEventListener('submit', function (event) {
+  event.preventDefault();
+  const fullName = document.getElementById('fullName').value.trim();
+  const email = document.getElementById('resumeEmail').value.trim();
+  const education = document.getElementById('education').value.trim();
+  const experience = document.getElementById('experience').value.trim();
+  const highlights = document.getElementById('highlights').value.trim();
+  document.getElementById('resumePreview').innerHTML = `
+    <h2 style="margin-bottom:10px;">${fullName}</h2>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Education:</strong> ${education}</p>
+    <p><strong>Experience:</strong> ${experience}</p>
+    <p><strong>Skills:</strong> ${highlights}</p>
+  `;
+});
+</script>
+</body>
+</html>

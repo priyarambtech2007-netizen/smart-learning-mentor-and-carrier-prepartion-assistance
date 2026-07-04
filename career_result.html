@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessment Result | Smart Learning Career</title>
+<link rel="stylesheet" href="../static/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+<div class="background">
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+</div>
+<div class="container">
+<div class="glass">
+<h1>Your Career Result</h1>
+<p id="resultText">Loading your recommendation...</p>
+<div class="dashboard-grid" style="margin-top:30px;">
+<div class="dash-card">
+<i class="fa-solid fa-shield-halved"></i>
+<h3>Assessment Result</h3>
+<p id="recommendedRole">—</p>
+</div>
+<div class="dash-card">
+<i class="fa-solid fa-chart-simple"></i>
+<h3>Your Score</h3>
+<p id="recommendationScore">—</p>
+</div>
+<div class="dash-card">
+<i class="fa-solid fa-lightbulb"></i>
+<h3>Next Step</h3>
+<p id="recommendationNext">Review the roadmap and follow the recommended learning focus.</p>
+</div>
+</div>
+<div style="margin-top:25px; display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+<a href="assessment.html" class="btn login"><i class="fa-solid fa-arrow-left"></i>Retake Assessment</a>
+<a href="roadmap.html" class="btn register"><i class="fa-solid fa-route"></i>Open Roadmap</a>
+</div>
+</div>
+</div>
+<script src="../static/script.js"></script>
+<script>
+const recommendation = localStorage.getItem('assessmentRecommendation') || 'Review the roadmap and keep learning.';
+const score = localStorage.getItem('assessmentScore') || '0';
+const total = localStorage.getItem('assessmentTotal') || '8';
+const resultText = `You answered ${score} out of ${total} questions correctly.`;
+const scoreValue = Number(score);
+const totalValue = Number(total);
+const percentage = totalValue ? Math.round((scoreValue / totalValue) * 100) : 0;
+
+document.getElementById('resultText').textContent = resultText;
+document.getElementById('recommendedRole').textContent = recommendation;
+document.getElementById('recommendationScore').textContent = `${score} / ${total} (${percentage}%)`;
+if (percentage >= 80) {
+  document.getElementById('recommendationNext').textContent = 'Great job! You can move on to intermediate learning and hands-on projects.';
+} else if (percentage >= 50) {
+  document.getElementById('recommendationNext').textContent = 'Solid foundation. Focus on practice and reinforce the key concepts.';
+} else {
+  document.getElementById('recommendationNext').textContent = 'Start with the basics and review the fundamentals before moving ahead.';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Assessment | Smart Learning Career</title>
+<link rel="stylesheet" href="../static/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+<div class="background">
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+</div>
+<div class="container">
+<div class="glass">
+<h1>Career Assessment</h1>
+<p>Answer these questions to get a quick career recommendation.</p>
+<form id="assessmentForm">
+<div class="input-group" style="flex-direction:column; gap:15px;">
+<label><strong>1. Which syntax correctly prints text in Python?</strong></label>
+<div><label><input type="radio" name="q1" value="1" required> print("Hello")</label></div>
+<div><label><input type="radio" name="q1" value="0"> echo "Hello"</label></div>
+<div><label><input type="radio" name="q1" value="0"> println("Hello")</label></div>
+</div>
+<div class="input-group" style="flex-direction:column; gap:15px;">
+<label><strong>2. Which HTML tag creates a clickable link?</strong></label>
+<div><label><input type="radio" name="q2" value="1" required> &lt;a&gt;</label></div>
+<div><label><input type="radio" name="q2" value="0"> &lt;link&gt;</label></div>
+<div><label><input type="radio" name="q2" value="0"> &lt;button&gt;</label></div>
+</div>
+<div class="input-group" style="flex-direction:column; gap:15px;">
+<label><strong>3. In CSS, which property changes the text color?</strong></label>
+<div><label><input type="radio" name="q3" value="1" required> color</label></div>
+<div><label><input type="radio" name="q3" value="0"> font-style</label></div>
+<div><label><input type="radio" name="q3" value="0"> text-align</label></div>
+</div>
+<div class="input-group" style="flex-direction:column; gap:15px;">
+<label><strong>4. Which SQL statement is used to read data from a table?</strong></label>
+<div><label><input type="radio" name="q4" value="1" required> SELECT</label></div>
+<div><label><input type="radio" name="q4" value="0"> INSERT</label></div>
+<div><label><input type="radio" name="q4" value="0"> UPDATE</label></div>
+</div>
+<div class="input-group" style="flex-direction:column; gap:15px;">
+<label><strong>5. Which term describes the variable a model predicts in machine learning?</strong></label>
+<div><label><input type="radio" name="q5" value="1" required> Target</label></div>
+<div><label><input type="radio" name="q5" value="0"> Feature</label></div>
+<div><label><input type="radio" name="q5" value="0"> Algorithm</label></div>
+</div>
+<div class="input-group" style="flex-direction:column; gap:15px;">
+<label><strong>6. What does the code <code>for i in range(3):</code> do?</strong></label>
+<div><label><input type="radio" name="q6" value="1" required> Repeats the loop 3 times</label></div>
+<div><label><input type="radio" name="q6" value="0"> Runs only once</label></div>
+<div><label><input type="radio" name="q6" value="0"> Creates 3 variables</label></div>
+</div>
+<div class="input-group" style="flex-direction:column; gap:15px;">
+<label><strong>7. Which Python data type stores true/false values?</strong></label>
+<div><label><input type="radio" name="q7" value="1" required> bool</label></div>
+<div><label><input type="radio" name="q7" value="0"> int</label></div>
+<div><label><input type="radio" name="q7" value="0"> str</label></div>
+</div>
+<div class="input-group" style="flex-direction:column; gap:15px;">
+<label><strong>8. Which tool is commonly used to install Python packages?</strong></label>
+<div><label><input type="radio" name="q8" value="1" required> pip</label></div>
+<div><label><input type="radio" name="q8" value="0"> npm</label></div>
+<div><label><input type="radio" name="q8" value="0"> yarn</label></div>
+</div>
+<button type="submit" class="login-btn">Submit Assessment</button>
+</form>
+<div id="assessmentFeedback" style="margin-top:25px; color:#dbeafe;"></div>
+<div style="margin-top:20px; display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+<a href="dashboard.html" class="btn login"><i class="fa-solid fa-arrow-left"></i>Back to Dashboard</a>
+<a href="roadmap.html" class="btn register"><i class="fa-solid fa-route"></i>View Roadmap</a>
+</div>
+</div>
+</div>
+<script src="../static/script.js"></script>
+<script>
+const assessmentForm = document.getElementById('assessmentForm');
+const assessmentFeedback = document.getElementById('assessmentFeedback');
+assessmentForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  const formData = new FormData(assessmentForm);
+  const answers = [];
+  for (let i = 1; i <= 8; i += 1) {
+    const value = formData.get('q' + i);
+    if (value === null) {
+      assessmentFeedback.textContent = 'Please answer all the questions before submitting.';
+      return;
+    }
+    answers.push(Number(value));
+  }
+  const score = answers.reduce((sum, value) => sum + value, 0);
+  let recommendation = 'Python & AI Foundations';
+  if (score <= 3) {
+    recommendation = 'Start with basics in programming and web development.';
+  } else if (score <= 5) {
+    recommendation = 'Continue learning core programming, HTML/CSS, and Python.';
+  } else if (score <= 7) {
+    recommendation = 'You are ready for intermediate learning in AI or web apps.';
+  } else {
+    recommendation = 'You have strong foundational knowledge and can advance further.';
+  }
+  localStorage.setItem('assessmentScore', score.toString());
+  localStorage.setItem('assessmentRecommendation', recommendation);
+  localStorage.setItem('assessmentTotal', '8');
+  window.location.href = 'career_result.html';
+});
+</script>
+</body>
+</html>

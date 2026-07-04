@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Chatbot | Smart Learning Career</title>
+<link rel="stylesheet" href="../static/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+<div class="background">
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+</div>
+<div class="container">
+<div class="glass">
+<h1>AI Chatbot</h1>
+<p>Chat with our helper for quick career tips and study support.</p>
+<div id="chatWindow" style="margin-top:25px; text-align:left; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:20px; min-height:260px; color:#e2e8f0; overflow-y:auto; max-height:400px;">
+<div style="margin-bottom:18px;">Hello! Ask me anything about learning, jobs, or resumes.</div>
+</div>
+<form id="chatForm" style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end;">
+<textarea id="chatInput" rows="3" placeholder="Type your message..." style="flex:1; min-width:220px; border-radius:14px; border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.06); color:white; padding:14px; resize:none;"></textarea>
+<button type="submit" class="login-btn" style="height:56px;">Send</button>
+</form>
+<div style="margin-top:20px; display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+<a href="dashboard.html" class="btn login"><i class="fa-solid fa-arrow-left"></i>Back to Dashboard</a>
+<a href="mentor.html" class="btn register"><i class="fa-solid fa-robot"></i>Open Mentor</a>
+</div>
+</div>
+</div>
+<script src="../static/script.js"></script>
+<script>
+const chatForm = document.getElementById('chatForm');
+const chatWindow = document.getElementById('chatWindow');
+const chatInput = document.getElementById('chatInput');
+const chatbotReplies = {
+  hello: 'Hello! I can answer questions about career paths, courses, resumes, interviews, and projects.',
+  resume: 'A strong resume highlights your relevant projects, tools, and measurable achievements. Keep it concise and customize it for the role.',
+  interview: 'For interviews, practice explaining your ideas clearly, review common questions, and prepare a few company-specific questions to ask.',
+  learn: 'Pick one topic, learn the basics, build a small project, then move to the next topic. Consistent practice helps more than cramming.',
+  career: 'Choose career paths that match your interests and strengths. Research roles, required skills, and hiring trends before deciding.',
+  project: 'Build 3-5 real projects that show your skills, tools used, and your specific contributions. Share them in a portfolio or GitHub.',
+  skills: 'Balance technical skills with communication and teamwork. Practice coding plus soft skills like problem solving and presenting your work.',
+  default: 'I can help with resumes, interviews, courses, career planning, projects, and skills. Ask a question like "How do I improve my resume?" or "What courses should I take?"'
+};
+
+function getChatbotReply(text) {
+  const lower = text.toLowerCase();
+  if (/\b(hello|hi|hey|greetings)\b/.test(lower)) return chatbotReplies.hello;
+  if (/\b(resume|cv|cover letter|resume tips)\b/.test(lower)) return chatbotReplies.resume;
+  if (/\b(interview|prepare|preparation|mock interview|questions|hiring)\b/.test(lower)) return chatbotReplies.interview;
+  if (/\b(course|learn|study|bootcamp|training|online course|tutorial)\b/.test(lower)) return chatbotReplies.learn;
+  if (/\b(career|job|role|placement|job search|salary|job market)\b/.test(lower)) return chatbotReplies.career;
+  if (/\b(portfolio|project|projects|github|experience)\b/.test(lower)) return chatbotReplies.project;
+  if (/\b(skill|skills|technical|soft skill|communication|teamwork)\b/.test(lower)) return chatbotReplies.skills;
+  return chatbotReplies.default;
+}
+
+chatForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  const text = chatInput.value.trim();
+  if (!text) return;
+
+  const userLine = document.createElement('div');
+  userLine.style.marginBottom = '18px';
+  userLine.innerHTML = `<strong>You:</strong> ${text}`;
+  chatWindow.appendChild(userLine);
+
+  const reply = getChatbotReply(text);
+  const botLine = document.createElement('div');
+  botLine.style.marginBottom = '18px';
+  botLine.innerHTML = `<strong>Bot:</strong> ${reply}`;
+  chatWindow.appendChild(botLine);
+
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+  chatInput.value = '';
+});
+</script>
+</body>
+</html>

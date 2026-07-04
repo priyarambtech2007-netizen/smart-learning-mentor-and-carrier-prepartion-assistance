@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Register | Smart Learning Career</title>
+
+<link rel="stylesheet" href="../static/css/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="background">
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+</div>
+
+<div class="container">
+
+<div class="glass register-glass">
+
+<div class="logo">
+
+<i class="fa-solid fa-user-plus"></i>
+
+</div>
+
+<h1>Create <span>Account</span></h1>
+
+<p class="login-subtitle">
+
+Register to start your AI Career Journey
+
+</p>
+
+<form id="registerForm">
+
+<div class="input-group">
+
+<i class="fa-solid fa-user"></i>
+
+<input
+type="text"
+placeholder="Full Name"
+required>
+
+</div>
+
+<div class="input-group">
+
+<i class="fa-solid fa-envelope"></i>
+
+<input
+type="email"
+placeholder="Email Address"
+required>
+
+</div>
+
+<div class="input-group">
+
+<i class="fa-solid fa-phone"></i>
+
+<input
+type="tel"
+placeholder="Phone Number"
+required>
+
+</div>
+
+<div class="input-group">
+
+<i class="fa-solid fa-building-columns"></i>
+
+<input
+type="text"
+placeholder="College Name"
+required>
+
+</div>
+
+<div class="input-group">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+<select required>
+
+<option value="">Select Degree</option>
+
+<option>B.E</option>
+
+<option>B.Tech</option>
+
+<option>B.Sc</option>
+
+<option>BCA</option>
+
+<option>B.Com</option>
+
+<option>M.E</option>
+
+<option>M.Tech</option>
+
+<option>MCA</option>
+
+<option>MBA</option>
+
+</select>
+
+</div>
+
+<div class="input-group">
+
+<i class="fa-solid fa-book"></i>
+
+<input
+type="text"
+placeholder="Department"
+required>
+
+</div>
+
+<div class="input-group">
+
+<i class="fa-solid fa-calendar"></i>
+
+<select required>
+
+<option>Select Year</option>
+
+<option>1st Year</option>
+
+<option>2nd Year</option>
+
+<option>3rd Year</option>
+
+<option>Final Year</option>
+
+<option>Graduate</option>
+
+</select>
+
+</div>
+
+<div class="input-group">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+placeholder="Password"
+required>
+
+</div>
+
+<div class="input-group">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+placeholder="Confirm Password"
+required>
+
+</div>
+
+<button class="login-btn">
+
+Create Account
+
+</button>
+
+<div class="divider">
+
+<span>OR</span>
+
+</div>
+
+<button
+type="button"
+class="google-btn"
+onclick="googleLogin()">
+
+<i class="fa-brands fa-google"></i>
+
+Continue with Google
+
+</button>
+
+<p class="bottom-text">
+
+Already have an account?
+
+<a href="login.html">
+
+Login
+
+</a>
+
+</p>
+
+</form>
+
+</div>
+
+</div>
+
+<script>
+
+function googleLogin(){
+
+window.location.href="https://accounts.google.com/";
+
+}
+
+document.getElementById("registerForm").onsubmit=function(e){
+
+e.preventDefault();
+
+alert("Registration Successful!");
+
+window.location.href="login.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

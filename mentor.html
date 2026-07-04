@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Mentor | Smart Learning Career</title>
+<link rel="stylesheet" href="../static/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+<div class="background">
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+</div>
+<div class="container">
+<div class="glass">
+<h1>AI Mentor</h1>
+<p>Ask your career or learning questions and get instant guidance.</p>
+<div id="mentorChat" style="margin-top:25px; text-align:left; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:20px; min-height:260px; color:#e2e8f0; overflow-y:auto; max-height:400px;">
+<div class="mentor-message" style="margin-bottom:18px;"><strong>Mentor:</strong> Hi! I can help with career choices, learning plans, and preparation tips. Ask me anything.</div>
+</div>
+<form id="mentorForm" style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end;">
+<div style="flex:1; min-width:220px;">
+<textarea id="mentorQuestion" rows="3" placeholder="Type your question..." style="width:100%; border-radius:14px; border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.06); color:white; padding:14px; resize:none;"></textarea>
+</div>
+<button type="submit" class="login-btn" style="height:56px;">Ask Mentor</button>
+</form>
+<div style="margin-top:20px; display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+<a href="dashboard.html" class="btn login"><i class="fa-solid fa-arrow-left"></i>Back to Dashboard</a>
+<a href="roadmap.html" class="btn register"><i class="fa-solid fa-route"></i>View Roadmap</a>
+</div>
+</div>
+</div>
+<script src="../static/script.js"></script>
+<script>
+const mentorForm = document.getElementById('mentorForm');
+const mentorChat = document.getElementById('mentorChat');
+const mentorQuestion = document.getElementById('mentorQuestion');
+const responses = {
+  resume: 'A strong resume highlights your most relevant projects, tools, and achievements. Keep it clean, consistent, and tailored to the job you want.',
+  interview: 'Prepare with mock questions, practice explaining your work, and show confidence. Good interview answers combine technical skill and clear communication.',
+  courses: 'Start with a foundational course first, then build a small project. Practical experience helps more than just finishing lessons.',
+  portfolio: 'Showcase 3-5 real projects with details on tools used, your role, and what you learned. Make it easy for reviewers to see your impact.',
+  career: 'Choose roles that match your interests and strengths. Research the job market and then focus on skills and projects that match those roles.',
+  skills: 'Develop both technical skills like programming and soft skills like communication, teamwork, and problem-solving. Employers value both.',
+  default: 'I can guide you on resumes, interviews, courses, career paths, portfolios, and skills. Ask a question like "How can I improve my portfolio?" or "What should I study first?"'
+};
+
+function getMentorReply(text) {
+  const lower = text.toLowerCase();
+  if (/\b(resume|cv|cover letter|resume tips)\b/.test(lower)) return responses.resume;
+  if (/\b(interview|prepare|preparation|mock interview|questions|hiring)\b/.test(lower)) return responses.interview;
+  if (/\b(course|learn|study|bootcamp|training|online course|tutorial)\b/.test(lower)) return responses.courses;
+  if (/\b(portfolio|project|projects|github|experience)\b/.test(lower)) return responses.portfolio;
+  if (/\b(career|job|role|placement|job search|salary|job market)\b/.test(lower)) return responses.career;
+  if (/\b(skill|skills|technical|soft skill|communication|teamwork)\b/.test(lower)) return responses.skills;
+  return responses.default;
+}
+
+mentorForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  const question = mentorQuestion.value.trim();
+  if (!question) return;
+
+  const userMessage = document.createElement('div');
+  userMessage.style.marginBottom = '18px';
+  userMessage.innerHTML = `<strong>You:</strong> ${question}`;
+  mentorChat.appendChild(userMessage);
+
+  const answer = getMentorReply(question);
+  const mentorAnswer = document.createElement('div');
+  mentorAnswer.style.marginBottom = '18px';
+  mentorAnswer.innerHTML = `<strong>Mentor:</strong> ${answer}`;
+  mentorChat.appendChild(mentorAnswer);
+
+  mentorChat.scrollTop = mentorChat.scrollHeight;
+  mentorQuestion.value = '';
+});
+</script>
+</body>
+</html>

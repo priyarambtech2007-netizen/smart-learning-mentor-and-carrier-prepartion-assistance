@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Reference | Smart Learning Career</title>
+<link rel="stylesheet" href="../static/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<style>
+.reference-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+.reference-card {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+  padding: 20px;
+  color: #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.reference-card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+.reference-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+.reference-section {
+  background: rgba(255,255,255,.04);
+  border-radius: 12px;
+  padding: 12px;
+}
+.reference-section h4 {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+  color: #60a5fa;
+}
+.reference-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #e5e7eb;
+  font-size: 0.95rem;
+}
+.reference-list li {
+  margin-bottom: 8px;
+}
+.reference-list li:last-child {
+  margin-bottom: 0;
+}
+.reference-list a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+.reference-list a:hover {
+  text-decoration: underline;
+}
+.resource-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.resource-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+.resource-btn:hover {
+  background: #1d4ed8;
+}
+.resource-label {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+}
+.video-player {
+  margin-top: 14px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 14px;
+  overflow: hidden;
+  display: none;
+}
+.video-player.show {
+  display: block;
+}
+.video-player .player-title {
+  padding: 10px 12px;
+  background: rgba(37,99,235,.12);
+  color: #eff6ff;
+  font-size: 0.95rem;
+}
+.video-player iframe {
+  width: 100%;
+  min-height: 220px;
+  border: none;
+}
+.no-resource {
+  color: #94a3b8;
+}
+</style>
+</head>
+<body>
+<div class="background">
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+</div>
+<div class="container">
+<div class="glass">
+<h1>Learning Reference</h1>
+<p>Browse the available books and videos for each learning track.</p>
+<div class="reference-grid">
+<div class="reference-card">
+<h3>AI Foundations</h3>
+<div class="reference-meta"><span>AI & Machine Learning</span><span>Beginner</span><span>10 weeks</span></div>
+<p>Foundational course on Python, machine learning concepts, and basic model building.</p>
+<div class="reference-section">
+<h4>Books</h4>
+<ul class="reference-list">
+<li><div class="resource-item"><span>Python Crash Course by Eric Matthes</span><a href="https://nostarch.com/pythoncrashcourse2e" target="_blank" rel="noreferrer noopener" class="resource-btn"><i class="fa-solid fa-download"></i>Download</a></div></li>
+<li><div class="resource-item"><span>Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow</span><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/" target="_blank" rel="noreferrer noopener" class="resource-btn"><i class="fa-solid fa-download"></i>Download</a></div></li>
+<li><div class="resource-item"><span>Deep Learning with Python by François Chollet</span><a href="https://www.manning.com/books/deep-learning-with-python" target="_blank" rel="noreferrer noopener" class="resource-btn"><i class="fa-solid fa-download"></i>Download</a></div></li>
+</ul>
+</div>
+<div class="reference-section">
+<h4>Videos</h4>
+<ul class="reference-list">
+<li><div class="resource-item"><span>Machine Learning Basics - Andrew Ng</span><button type="button" class="resource-btn" onclick="playVideo('https://www.youtube.com/watch?v=GwIo3gDZCVQ', '1', 'Machine Learning Basics - Andrew Ng')"><i class="fa-solid fa-play"></i>Play</button></div></li>
+<li><div class="resource-item"><span>Python for Data Science Full Course</span><button type="button" class="resource-btn" onclick="playVideo('https://www.youtube.com/watch?v=rfscVS0vtbw', '1', 'Python for Data Science Full Course')"><i class="fa-solid fa-play"></i>Play</button></div></li>
+<li><div class="resource-item"><span>Intro to TensorFlow for Deep Learning</span><button type="button" class="resource-btn" onclick="playVideo('https://www.youtube.com/watch?v=tPYj3fFJGjk', '1', 'Intro to TensorFlow for Deep Learning')"><i class="fa-solid fa-play"></i>Play</button></div></li>
+</ul>
+<div id="player-1" class="video-player"><div class="player-title">Select a video to play</div><iframe id="videoFrame-1" allowfullscreen></iframe></div>
+</div>
+</div>
+<div class="reference-card">
+<h3>Web Development Bootcamp</h3>
+<div class="reference-meta"><span>Web Development</span><span>Beginner</span><span>12 weeks</span></div>
+<p>Learn HTML, CSS, JavaScript, and Flask by building real projects.</p>
+<div class="reference-section">
+<h4>Books</h4>
+<ul class="reference-list">
+<li><div class="resource-item"><span>Eloquent JavaScript by Marijn Haverbeke</span><a href="https://eloquentjavascript.net/" target="_blank" rel="noreferrer noopener" class="resource-btn"><i class="fa-solid fa-download"></i>Download</a></div></li>
+<li><div class="resource-item"><span>HTML and CSS: Design and Build Websites</span><a href="https://www.htmlandcssbook.com/" target="_blank" rel="noreferrer noopener" class="resource-btn"><i class="fa-solid fa-download"></i>Download</a></div></li>
+<li><div class="resource-item"><span>Learning Web Design by Jennifer Niederst Robbins</span><a href="https://www.oreilly.com/library/view/learning-web-design/9781491960207/" target="_blank" rel="noreferrer noopener" class="resource-btn"><i class="fa-solid fa-download"></i>Download</a></div></li>
+</ul>
+</div>
+<div class="reference-section">
+<h4>Videos</h4>
+<ul class="reference-list">
+<li><div class="resource-item"><span>The Web Developer Bootcamp</span><button type="button" class="resource-btn" onclick="playVideo('https://www.youtube.com/watch?v=Q33KBiDriJY', '2', 'The Web Developer Bootcamp')"><i class="fa-solid fa-play"></i>Play</button></div></li>
+<li><div class="resource-item"><span>Flask Tutorial - Python Web Development</span><button type="button" class="resource-btn" onclick="playVideo('https://www.youtube.com/watch?v=Z1RJmh_OqeA', '2', 'Flask Tutorial - Python Web Development')"><i class="fa-solid fa-play"></i>Play</button></div></li>
+<li><div class="resource-item"><span>HTML Full Course - Build a Website Tutorial</span><button type="button" class="resource-btn" onclick="playVideo('https://www.youtube.com/watch?v=pQN-pnXPaVg', '2', 'HTML Full Course - Build a Website Tutorial')"><i class="fa-solid fa-play"></i>Play</button></div></li>
+</ul>
+<div id="player-2" class="video-player"><div class="player-title">Select a video to play</div><iframe id="videoFrame-2" allowfullscreen></iframe></div>
+</div>
+</div>
+<div class="reference-card">
+<h3>Data Analytics Essentials</h3>
+<div class="reference-meta"><span>Data Analytics</span><span>Beginner</span><span>8 weeks</span></div>
+<p>Hands-on analytics training with Python, SQL, and visualization tools.</p>
+<div class="reference-section">
+<h4>Books</h4>
+<ul class="reference-list">
+<li><div class="resource-item"><span>Python for Data Analysis by Wes McKinney</span><a href="https://www.oreilly.com/library/view/python-for-data/9781491957653/" target="_blank" rel="noreferrer noopener" class="resource-btn"><i class="fa-solid fa-download"></i>Download</a></div></li>
+<li><div class="resource-item"><span>Storytelling with Data</span><a href="https://www.wiley.com/en-us/Storytelling+with+Data%3A+A+Data+Visualization+Guide+for+Business+Professionals-p-9781119002253" target="_blank" rel="noreferrer noopener" class="resource-btn"><i class="fa-solid fa-download"></i>Download</a></div></li>
+<li><div class="resource-item"><span>Practical Statistics for Data Scientists</span><a href="https://www.oreilly.com/library/view/practical-statistics-for/9781492072938/" target="_blank" rel="noreferrer noopener" class="resource-btn"><i class="fa-solid fa-download"></i>Download</a></div></li>
+</ul>
+</div>
+<div class="reference-section">
+<h4>Videos</h4>
+<ul class="reference-list">
+<li><div class="resource-item"><span>Data Analysis with Python Course</span><button type="button" class="resource-btn" onclick="playVideo('https://www.youtube.com/watch?v=r-uOLxNrNk8', '3', 'Data Analysis with Python Course')"><i class="fa-solid fa-play"></i>Play</button></div></li>
+<li><div class="resource-item"><span>SQL Tutorial - Full Course</span><button type="button" class="resource-btn" onclick="playVideo('https://www.youtube.com/watch?v=9Pzj7Aj25lw', '3', 'SQL Tutorial - Full Course')"><i class="fa-solid fa-play"></i>Play</button></div></li>
+<li><div class="resource-item"><span>Tableau Full Course for Beginners</span><button type="button" class="resource-btn" onclick="playVideo('https://www.youtube.com/watch?v=2r9DkCOJQP8', '3', 'Tableau Full Course for Beginners')"><i class="fa-solid fa-play"></i>Play</button></div></li>
+</ul>
+<div id="player-3" class="video-player"><div class="player-title">Select a video to play</div><iframe id="videoFrame-3" allowfullscreen></iframe></div>
+</div>
+</div>
+<div class="reference-card">
+<h3>Python Programming</h3>
+<div class="reference-meta"><span>Programming</span><span>Beginner</span><span>10 weeks</span></div>
+<p>Master Python from basics to advanced concepts with real-world projects.</p>
+<div class="reference-section">
+<h4>Books</h4>
+<ul class="reference-list">
+<li><div class="resource-item"><span>Automate the Boring Stuff with Python by Al Sweigart</span><a href="https://automatetheboringstuff.com/" target="_blank" rel="noreferrer noopener" class="resource-btn"><i class="fa-solid fa-download"></i>Download</a></div></li>
+<li><div class="resource-item"><span>Effective Python by Brett Slatkin</span><a href="https://effectivepython.com/" target="_blank" rel="noreferrer noopener" class="resource-btn"><i class="fa-solid fa-download"></i>Download</a></div></li>
+</ul>
+</div>
+<div class="reference-section">
+<h4>Videos</h4>
+<ul class="reference-list">
+<li><div class="resource-item"><span>Python Full Course - Beginner to Advanced</span><button type="button" class="resource-btn" onclick="playVideo('https://www.youtube.com/watch?v=rfscVS0vtbw', '4', 'Python Full Course - Beginner to Advanced')"><i class="fa-solid fa-play"></i>Play</button></div></li>
+<li><div class="resource-item"><span>Python OOP Tutorial</span><button type="button" class="resource-btn" onclick="playVideo('https://www.youtube.com/watch?v=JeznW_7DlB0', '4', 'Python OOP Tutorial')"><i class="fa-solid fa-play"></i>Play</button></div></li>
+</ul>
+<div id="player-4" class="video-player"><div class="player-title">Select a video to play</div><iframe id="videoFrame-4" allowfullscreen></iframe></div>
+</div>
+</div>
+<div class="reference-card">
+<h3>JavaScript Essentials</h3>
+<div class="reference-meta"><span>Web Development</span><span>Beginner</span><span>8 weeks</span></div>
+<p>Master JavaScript fundamentals and DOM manipulation for interactive web pages.</p>
+<div class="reference-section">
+<h4>Books</h4>
+<ul class="reference-list">
+<li><div class="resource-item"><span>You Don’t Know JS Yet by Kyle Simpson</span><a href="https://github.com/getify/You-Dont-Know-JS" target="_blank" rel="noreferrer noopener" class="resource-btn"><i class="fa-solid fa-download"></i>Download</a></div></li>
+<li><div class="resource-item"><span>JavaScript: The Good Parts by Douglas Crockford</span><a href="https://www.oreilly.com/library/view/javascript-the-good/9780596517748/" target="_blank" rel="noreferrer noopener" class="resource-btn"><i class="fa-solid fa-download"></i>Download</a></div></li>
+</ul>
+</div>
+<div class="reference-section">
+<h4>Videos</h4>
+<ul class="reference-list">
+<li><div class="resource-item"><span>JavaScript Tutorial for Beginners</span><button type="button" class="resource-btn" onclick="playVideo('https://www.youtube.com/watch?v=PkZNo7MFNFg', '5', 'JavaScript Tutorial for Beginners')"><i class="fa-solid fa-play"></i>Play</button></div></li>
+<li><div class="resource-item"><span>JavaScript DOM Tutorial</span><button type="button" class="resource-btn" onclick="playVideo('https://www.youtube.com/watch?v=0ik6X4DJKCc', '5', 'JavaScript DOM Tutorial')"><i class="fa-solid fa-play"></i>Play</button></div></li>
+</ul>
+<div id="player-5" class="video-player"><div class="player-title">Select a video to play</div><iframe id="videoFrame-5" allowfullscreen></iframe></div>
+</div>
+</div>
+<div class="reference-card">
+<h3>React.js Mastery</h3>
+<div class="reference-meta"><span>Web Development</span><span>Intermediate</span><span>10 weeks</span></div>
+<p>Build modern SPAs using React, Hooks, and state management.</p>
+<div class="reference-section">
+<h4>Books</h4>
+<ul class="reference-list">
+<li><div class="resource-item"><span>Learning React by Alex Banks and Eve Porcello</span><a href="https://www.oreilly.com/library/view/learning-react-2nd/9781492051718/" target="_blank" rel="noreferrer noopener" class="resource-btn"><i class="fa-solid fa-download"></i>Download</a></div></li>
+<li><div class="resource-item"><span>The Road to React by Robin Wieruch</span><a href="https://www.roadtoreact.com/" target="_blank" rel="noreferrer noopener" class="resource-btn"><i class="fa-solid fa-download"></i>Download</a></div></li>
+</ul>
+</div>
+<div class="reference-section">
+<h4>Videos</h4>
+<ul class="reference-list">
+<li><div class="resource-item"><span>React JS Crash Course</span><button type="button" class="resource-btn" onclick="playVideo('https://www.youtube.com/watch?v=w7ejDZ8SWv8', '6', 'React JS Crash Course')"><i class="fa-solid fa-play"></i>Play</button></div></li>
+<li><div class="resource-item"><span>React Hooks Tutorial</span><button type="button" class="resource-btn" onclick="playVideo('https://www.youtube.com/watch?v=f687hBjwFcM', '6', 'React Hooks Tutorial')"><i class="fa-solid fa-play"></i>Play</button></div></li>
+</ul>
+<div id="player-6" class="video-player"><div class="player-title">Select a video to play</div><iframe id="videoFrame-6" allowfullscreen></iframe></div>
+</div>
+</div>
+</div>
+<div style="margin-top:24px; display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+<a href="dashboard.html" class="btn login"><i class="fa-solid fa-arrow-left"></i>Back to Dashboard</a>
+<a href="roadmap.html" class="btn register"><i class="fa-solid fa-route"></i>Open Roadmap</a>
+</div>
+</div>
+</div>
+<script src="../static/script.js"></script>
+<script>
+function playVideo(url, courseId, title) {
+  const iframe = document.getElementById(`videoFrame-${courseId}`);
+  const player = document.getElementById(`player-${courseId}`);
+  const titleNode = player.querySelector('.player-title');
+  const embedUrl = url.includes('watch?v=') ? url.replace('watch?v=', 'embed/') : url;
+  iframe.src = embedUrl + (embedUrl.includes('?') ? '&' : '?') + 'rel=0&autoplay=1';
+  titleNode.textContent = `Playing: ${title}`;
+  player.classList.add('show');
+}
+</script>
+</body>
+</html>
